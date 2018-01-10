@@ -29,7 +29,7 @@ const callbackWithAssertion = function(callback, assertion) {
 defineSupportCode(function({Before}) {
     Before(function(scenarioResult, callback) {
         // https://github.com/cucumber/cucumber-js/issues/891
-        // stepContext.step = step.getName;
+        stepContext.step = "hidden step";
         // stepContext.scenario = scenario.getName;
 
         callback();
@@ -38,7 +38,7 @@ defineSupportCode(function({Before}) {
 
 defineSupportCode(function({Given, When, Then}) {
     Given(/^I set (.*) header to (.*)$/, function(headerName, headerValue, callback) {
-        this.apickli.addRequestHeader(headerName, headerValue);
+        this.apickli.setRequestHeader(headerName, headerValue);
         callback();
     });
 
